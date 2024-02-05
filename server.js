@@ -3,9 +3,10 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 const inlineCss = require('inline-css');
+require('dotenv').config();
 
 const app = express();
-const port = 5000 || 3000;
+var port = process.env.PORT || 8080;
 
 app.use(cors());
 app.use(bodyParser.json());
