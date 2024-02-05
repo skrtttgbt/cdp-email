@@ -1,1 +1,1 @@
-web: node cdp-email.js
+web: node server.js
