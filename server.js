@@ -5,7 +5,7 @@ const nodemailer = require('nodemailer');
 const inlineCss = require('inline-css');
 
 const app = express();
-const port = 5000;
+const port = 5000 || 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
