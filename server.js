@@ -1254,7 +1254,7 @@ app.post('/complete', async (req, res) => {
 });
 
 app.post('/register', async (req, res) => {
-  const { email, formData , subject } = req.body;
+  const { email, addForm , subject } = req.body;
 
   try {
     const htmlContent =  `<!doctype html>
@@ -1514,7 +1514,7 @@ app.post('/register', async (req, res) => {
                   </tr>
                   <tr>
                     <td class="wrapper">
-                      <p>Hi ${formData.firstname},</p>
+                      <p>Hi ${addForm.firstname},</p>
                       <p>
                         Welcome to Chosen Drop Point. Your account has been created successfully. Kindly await APPROVAL for your account</p><br/>
                        <p>Your  Account Details are as follows : </p>
@@ -1522,19 +1522,19 @@ app.post('/register', async (req, res) => {
                         <tbody>
                           <tr>
                             <td>First Name: </td>
-                            <td>${formData.firstname}</td>
+                            <td>${addForm.firstname}</td>
                           </tr>
                           <tr>
                             <td>Middle Name: </td>
-                            <td>${formData.middlename}</td>
+                            <td>${addForm.middlename}</td>
                           </tr>
                           <tr>
                             <td>Last Name: </td>
-                            <td>${formData.lastname}</td>
+                            <td>${addForm.lastname}</td>
                           </tr>
                           <tr>
                             <td>Email Address: </td>
-                            <td>${formData.email}</td>
+                            <td>${addForm.email}</td>
                           </tr>
                         </tbody>
                       </table>
@@ -1913,6 +1913,706 @@ app.post('/userapprove', async (req, res) => {
                           </tr>
                         </tbody>
                       </table>
+                    </td>
+                  </tr>
+    
+                  <!-- END MAIN CONTENT AREA -->
+                  </table>
+    
+                <!-- START FOOTER -->
+                <div class="footer">
+                  <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td class="content-block">
+                        <span class="apple-link">Unit B-02 Lower 2nd Floor St. Francis Square Building Julia Vargas Avenue cor. Bank Drive Ortigas Center Mandaluyong City.</span>
+                        <br><br/> Do you have questions? <br/>
+                        Email us @ 
+                        <a href="https://https://ichosendroppoint.com/contact%20Us" target="_blank">iamchoseninternational@gmail.com</a> <br>(02) – 7006-8924
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+    
+                <!-- END FOOTER -->
+                
+    <!-- END CENTERED WHITE CONTAINER --></div>
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+      </body>
+    </html>
+    `;
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'iamchosendroppoint@gmail.com',
+        pass: 'yueh qywn hkwo kjmp',
+      },
+    });
+
+    const mailOptions = {
+      from: 'iamchosendroppoint@gmail.com',
+      to: email,
+      subject: subject,
+      html:htmlContent,
+    };
+
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ message: 'Email sent successfully' });
+  } catch (error) {
+    console.error('Error sending email:', error);
+    res.status(500).json({ error: 'Failed to send email' });
+  }
+});
+app.post('/cashbondReq', async (req, res) => {
+  const { email, cashBondData , subject } = req.body;
+
+  try {
+    const htmlContent =  `
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style media="all" type="text/css">
+        
+        body {
+          font-family: Helvetica, sans-serif;
+          -webkit-font-smoothing: antialiased;
+          font-size: 16px;
+          line-height: 1.3;
+          -ms-text-size-adjust: 100%;
+          -webkit-text-size-adjust: 100%;
+        }
+        
+        table {
+          border-collapse: separate;
+          mso-table-lspace: 0pt;
+          mso-table-rspace: 0pt;
+          width: 100%;
+        }
+        
+        table td {
+          font-family: Helvetica, sans-serif;
+          font-size: 16px;
+          vertical-align: top;
+        }
+        
+        body {
+          background-color: #f4f5f6;
+          margin: 0;
+          padding: 0;
+        }
+        
+        .body {
+          background-color: #f4f5f6;
+          width: 100%;
+        }
+        
+        .container {
+          margin: 0 auto !important;
+          max-width: 600px;
+          padding: 0;
+          padding-top: 24px;
+          width: 600px;
+        }
+        
+        .content {
+          box-sizing: border-box;
+          display: block;
+          margin: 0 auto;
+          max-width: 600px;
+          padding: 0;
+        }
+        
+        .main {
+          background: #ffffff;
+          border: 1px solid #eaebed;
+          border-radius: 16px;
+          width: 100%;
+        }
+        
+        .wrapper {
+          box-sizing: border-box;
+          padding: 24px;
+        }
+        
+        .footer {
+          clear: both;
+          padding-top: 24px;
+          text-align: center;
+          width: 100%;
+        }
+        
+        .footer td,
+        .footer p,
+        .footer span,
+        .footer a {
+          color: #9a9ea6;
+          font-size: 16px;
+          text-align: center;
+        }
+        
+        p {
+          font-family: Helvetica, sans-serif;
+          font-size: 16px;
+          font-weight: normal;
+          margin: 0;
+          margin-bottom: 16px;
+        }
+        
+        .btn {
+          box-sizing: border-box;
+          min-width: 100% !important;
+          width: 100%;
+        }
+        
+        .btn > tbody > tr > td {
+          padding-bottom: 16px;
+        }
+        
+        .btn table {
+          width: auto;
+        }
+        
+        .btn table td {
+          background-color: #ffffff;
+          border-radius: 4px;
+          text-align: center;
+        }
+    
+        .last {
+          margin-bottom: 0;
+        }
+        
+        .first {
+          margin-top: 0;
+        }
+        
+        .align-center {
+          text-align: center;
+        }
+        
+        .align-right {
+          text-align: right;
+        }
+        
+        .align-left {
+          text-align: left;
+        }
+        
+        .text-link {
+          color: #0867ec !important;
+          text-decoration: underline !important;
+        }
+        
+        .clear {
+          clear: both;
+        }
+        
+        .mt0 {
+          margin-top: 0;
+        }
+        
+        .mb0 {
+          margin-bottom: 0;
+        }
+        
+        .preheader {
+          color: transparent;
+          display: none;
+          height: 0;
+          max-height: 0;
+          max-width: 0;
+          opacity: 0;
+          overflow: hidden;
+          mso-hide: all;
+          visibility: hidden;
+          width: 0;
+        }
+        
+        .powered-by a {
+          text-decoration: none;
+        }
+        p.text-info{
+          margin-bottom: 2px;
+        }
+        
+        @media only screen and (max-width: 640px) {
+          .main p,
+          .main td,
+          .main span {
+            font-size: 16px !important;
+          }
+          .wrapper {
+            padding: 8px !important;
+          }
+          .content {
+            padding: 0 !important;
+          }
+          .container {
+            padding: 0 !important;
+            padding-top: 8px !important;
+            width: 100% !important;
+          }
+          .main {
+            border-left-width: 0 !important;
+            border-radius: 0 !important;
+            border-right-width: 0 !important;
+          }
+          .btn table {
+            max-width: 100% !important;
+            width: 100% !important;
+          }
+          .btn a {
+            font-size: 16px !important;
+            max-width: 100% !important;
+            width: 100% !important;
+          }
+        }
+        
+        @media all {
+          .ExternalClass {
+            width: 100%;
+          }
+          .ExternalClass,
+          .ExternalClass p,
+          .ExternalClass span,
+          .ExternalClass font,
+          .ExternalClass td,
+          .ExternalClass div {
+            line-height: 100%;
+          }
+          .apple-link a {
+            color: inherit !important;
+            font-family: inherit !important;
+            font-size: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+            text-decoration: none !important;
+          }
+          #MessageViewBody a {
+            color: inherit;
+            text-decoration: none;
+            font-size: inherit;
+            font-family: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+          }
+        }
+        .logo-holder{
+          padding: 15px;
+        }
+        </style>
+      </head>
+      <body>
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
+          <tr>
+            <td>&nbsp;</td>
+            <td class="container">
+              <div class="content">
+    
+                <!-- START CENTERED WHITE CONTAINER -->
+                <span class="preheader">This is preheader text. Some clients will show this text as a preview.</span>
+                <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="main">
+    
+                  <!-- START MAIN CONTENT AREA -->
+                  <tr>
+                    <td class="logo-holder">
+                      <img src="https://ichosendroppoint.com/static/media/CDP_green.8e056bc2306d56329cbc.png" alt="" width="256" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="wrapper">
+                      <p>Hi ${cashBondData.sender},</p>
+                      <p>
+                        Your Cash-bond request has been sent. Kindly await approval for your request.</p><br/>
+                       <p>Your Cash Bond Request Details are as follows : </p>
+                      <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                        <tbody>
+                          <tr>
+                            <td>Date: </td>
+                            <td>${cashBondData.date}</td>
+                          </tr>
+                          <tr>
+                            <td>Amount: </td>
+                            <td>${parseFloat(cashBondData.amount).toLocaleString()}</td>
+                          </tr>
+                          <tr>
+                            <td>Member Name: </td>
+                            <td>${cashBondData.sender}</td>
+                          </tr>
+                          <tr>
+                            <td>Phone Number: </td>
+                            <td>${cashBondData.phone}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <br/><br/>
+                      <p>Before the approval of your request, please sent us your proof of payment here.</p>
+                      <p>Thank you!</p>
+                      <br/>
+                      <!-- Payment Instructions Section -->
+                      <div style="border: 1px solid #eaebed; border-radius: 8px; padding: 16px; margin-top: 16px;">
+                        <h4>Payment Options:</h4>
+                        <p>
+    
+                        <!-- BDO Account -->
+                        <p><strong>BDO Account:</strong></p>
+                        <p class="text-info">Account Name: I AM CHOSEN INTERNATIONAL</p>
+                        <p>Account Number: 006930154740</p>
+    
+                        <!-- BPI Account -->
+                        <p><strong>BPI Account:</strong></p>
+                        <p class="text-info">Account Name: I AM CHOSEN INTERNATIONAL</p>
+                        <p>Account Number: 4229-2502-12</p>
+    
+                        <!-- GCASH Account -->
+                        <p><strong>GCASH:</strong></p>
+                        <p>GCASH Number: 09475047299</p>
+                      </div>
+                      <br/>
+                      <p>Please ensure to include your unique transaction reference when making the payment. Once the payment is complete, kindly submit the proof of payment for a prompt review for approval of your Cash-bond request.</p>
+                      <p>Thank you for your cooperation and trust in CHOSEN DROP POINT.</p>
+                    </td>
+                  </tr>
+    
+                  <!-- END MAIN CONTENT AREA -->
+                  </table>
+    
+                <!-- START FOOTER -->
+                <div class="footer">
+                  <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td class="content-block">
+                        <span class="apple-link">Unit B-02 Lower 2nd Floor St. Francis Square Building Julia Vargas Avenue cor. Bank Drive Ortigas Center Mandaluyong City.</span>
+                        <br><br/> Do you have questions? <br/>
+                        Email us @ 
+                        <a href="https://https://ichosendroppoint.com/contact%20Us" target="_blank">iamchoseninternational@gmail.com</a> <br>(02) – 7006-8924
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+    
+                <!-- END FOOTER -->
+                
+    <!-- END CENTERED WHITE CONTAINER --></div>
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+      </body>
+    </html>
+    `;
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'iamchosendroppoint@gmail.com',
+        pass: 'yueh qywn hkwo kjmp',
+      },
+    });
+
+    const mailOptions = {
+      from: 'iamchosendroppoint@gmail.com',
+      to: email,
+      subject: subject,
+      html:htmlContent,
+    };
+
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ message: 'Email sent successfully' });
+  } catch (error) {
+    console.error('Error sending email:', error);
+    res.status(500).json({ error: 'Failed to send email' });
+  }
+});
+
+app.post('/cashoutReq', async (req, res) => {
+  const { email, RequestData , subject } = req.body;
+
+  try {
+    const htmlContent =  `<!doctype html>
+    <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style media="all" type="text/css">
+        
+        body {
+          font-family: Helvetica, sans-serif;
+          -webkit-font-smoothing: antialiased;
+          font-size: 16px;
+          line-height: 1.3;
+          -ms-text-size-adjust: 100%;
+          -webkit-text-size-adjust: 100%;
+        }
+        
+        table {
+          border-collapse: separate;
+          mso-table-lspace: 0pt;
+          mso-table-rspace: 0pt;
+          width: 100%;
+        }
+        
+        table td {
+          font-family: Helvetica, sans-serif;
+          font-size: 16px;
+          vertical-align: top;
+        }
+        
+        body {
+          background-color: #f4f5f6;
+          margin: 0;
+          padding: 0;
+        }
+        
+        .body {
+          background-color: #f4f5f6;
+          width: 100%;
+        }
+        
+        .container {
+          margin: 0 auto !important;
+          max-width: 600px;
+          padding: 0;
+          padding-top: 24px;
+          width: 600px;
+        }
+        
+        .content {
+          box-sizing: border-box;
+          display: block;
+          margin: 0 auto;
+          max-width: 600px;
+          padding: 0;
+        }
+        
+        .main {
+          background: #ffffff;
+          border: 1px solid #eaebed;
+          border-radius: 16px;
+          width: 100%;
+        }
+        
+        .wrapper {
+          box-sizing: border-box;
+          padding: 24px;
+        }
+        
+        .footer {
+          clear: both;
+          padding-top: 24px;
+          text-align: center;
+          width: 100%;
+        }
+        
+        .footer td,
+        .footer p,
+        .footer span,
+        .footer a {
+          color: #9a9ea6;
+          font-size: 16px;
+          text-align: center;
+        }
+        
+        p {
+          font-family: Helvetica, sans-serif;
+          font-size: 16px;
+          font-weight: normal;
+          margin: 0;
+          margin-bottom: 16px;
+        }
+        
+        .btn {
+          box-sizing: border-box;
+          min-width: 100% !important;
+          width: 100%;
+        }
+        
+        .btn > tbody > tr > td {
+          padding-bottom: 16px;
+        }
+        
+        .btn table {
+          width: auto;
+        }
+        
+        .btn table td {
+          background-color: #ffffff;
+          border-radius: 4px;
+          text-align: center;
+        }
+    
+        .last {
+          margin-bottom: 0;
+        }
+        
+        .first {
+          margin-top: 0;
+        }
+        
+        .align-center {
+          text-align: center;
+        }
+        
+        .align-right {
+          text-align: right;
+        }
+        
+        .align-left {
+          text-align: left;
+        }
+        
+        .text-link {
+          color: #0867ec !important;
+          text-decoration: underline !important;
+        }
+        
+        .clear {
+          clear: both;
+        }
+        
+        .mt0 {
+          margin-top: 0;
+        }
+        
+        .mb0 {
+          margin-bottom: 0;
+        }
+        
+        .preheader {
+          color: transparent;
+          display: none;
+          height: 0;
+          max-height: 0;
+          max-width: 0;
+          opacity: 0;
+          overflow: hidden;
+          mso-hide: all;
+          visibility: hidden;
+          width: 0;
+        }
+        
+        .powered-by a {
+          text-decoration: none;
+        }
+        
+        @media only screen and (max-width: 640px) {
+          .main p,
+          .main td,
+          .main span {
+            font-size: 16px !important;
+          }
+          .wrapper {
+            padding: 8px !important;
+          }
+          .content {
+            padding: 0 !important;
+          }
+          .container {
+            padding: 0 !important;
+            padding-top: 8px !important;
+            width: 100% !important;
+          }
+          .main {
+            border-left-width: 0 !important;
+            border-radius: 0 !important;
+            border-right-width: 0 !important;
+          }
+          .btn table {
+            max-width: 100% !important;
+            width: 100% !important;
+          }
+          .btn a {
+            font-size: 16px !important;
+            max-width: 100% !important;
+            width: 100% !important;
+          }
+        }
+        
+        @media all {
+          .ExternalClass {
+            width: 100%;
+          }
+          .ExternalClass,
+          .ExternalClass p,
+          .ExternalClass span,
+          .ExternalClass font,
+          .ExternalClass td,
+          .ExternalClass div {
+            line-height: 100%;
+          }
+          .apple-link a {
+            color: inherit !important;
+            font-family: inherit !important;
+            font-size: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+            text-decoration: none !important;
+          }
+          #MessageViewBody a {
+            color: inherit;
+            text-decoration: none;
+            font-size: inherit;
+            font-family: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+          }
+        }
+        .logo-holder{
+          padding: 15px;
+        }
+        </style>
+      </head>
+      <body>
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
+          <tr>
+            <td>&nbsp;</td>
+            <td class="container">
+              <div class="content">
+    
+                <!-- START CENTERED WHITE CONTAINER -->
+                <span class="preheader">This is preheader text. Some clients will show this text as a preview.</span>
+                <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="main">
+    
+                  <!-- START MAIN CONTENT AREA -->
+                  <tr>
+                    <td class="logo-holder">
+                      <img src="https://ichosendroppoint.com/static/media/CDP_green.8e056bc2306d56329cbc.png" alt="" width="256" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="wrapper">
+                      <p>Hi ${RequestData.sender},</p>
+                      <p>
+                        Your Cashout Request has been sent. Kindly await approval for your request.</p><br/>
+                       <p>Your Cashout Request Details are as follows : </p>
+                      <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                        <tbody>
+                          <tr>
+                            <td>Amount: </td>
+                            <td>${parseFloat(RequestData.amount).toLocaleString()}</td>
+                          </tr>
+                          <tr>
+                            <td>Account Name: </td>
+                            <td>${RequestData.sender} </td>
+                          </tr>
+                          <tr>
+                            <td>Method: </td>
+                            <td>${RequestData.Method}</td>
+                          </tr>
+                          <tr>
+                            <td>Additional Info: </td>
+                            <td>${RequestData.additionalInfo}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <br/><br/>
+                      <p>We are happy to work with you. Please feel free to contact us if you have any questions or need assistance!</p>
+                      <p>Thank you!</p>
                     </td>
                   </tr>
     
