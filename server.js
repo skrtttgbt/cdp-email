@@ -2670,7 +2670,7 @@ app.post('/cashoutReq', async (req, res) => {
 app.post('/subscribe', async (req, res) => {
   const { email, newFormData, renewalOption , subject } = req.body;
   const SubscriptionRange = () => {
-    if(renewalOption === 1) {
+    if(renewalOption == 1) {
       return renewalOption + 'month'
     }
     return renewalOption + 'months'
@@ -2951,7 +2951,7 @@ app.post('/subscribe', async (req, res) => {
                     <td class="wrapper">
                       <p>Hi ${newFormData.firstname},</p>
                       <p>
-                        Your Subcription has been registered for 2 months!</p><br/>
+                        Your Subcription has been registered for ${SubscriptionRange()}!</p><br/>
                        <p>Your Subscription Details are as follows : </p>
                       <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                         <tbody>
