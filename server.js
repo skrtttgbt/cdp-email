@@ -1254,7 +1254,7 @@ app.post('/complete', async (req, res) => {
 });
 
 app.post('/register', async (req, res) => {
-  const { email, addForm , subject } = req.body;
+  const { email, formData , subject } = req.body;
 
   try {
     const htmlContent =  `<!doctype html>
@@ -1514,7 +1514,7 @@ app.post('/register', async (req, res) => {
                   </tr>
                   <tr>
                     <td class="wrapper">
-                      <p>Hi ${addForm.firstname},</p>
+                      <p>Hi ${formData.firstname},</p>
                       <p>
                         Welcome to Chosen Drop Point. Your account has been created successfully. Kindly await APPROVAL for your account</p><br/>
                        <p>Your  Account Details are as follows : </p>
@@ -1522,19 +1522,19 @@ app.post('/register', async (req, res) => {
                         <tbody>
                           <tr>
                             <td>First Name: </td>
-                            <td>${addForm.firstname}</td>
+                            <td>${formData.firstname}</td>
                           </tr>
                           <tr>
                             <td>Middle Name: </td>
-                            <td>${addForm.middlename}</td>
+                            <td>${formData.middlename}</td>
                           </tr>
                           <tr>
                             <td>Last Name: </td>
-                            <td>${addForm.lastname}</td>
+                            <td>${formData.lastname}</td>
                           </tr>
                           <tr>
                             <td>Email Address: </td>
-                            <td>${addForm.email}</td>
+                            <td>${formData.email}</td>
                           </tr>
                         </tbody>
                       </table>
